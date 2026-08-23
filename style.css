@@ -1,0 +1,318 @@
+/* =========================================================
+   Presentasi Sertifikasi Independen — Arif Furqhan
+   Warna & font dipertahankan dari rancangan PPT asli:
+   - Heading : Arial Bold, huruf kapital, putih
+   - Body    : Arial / Calibri
+   - Aksen   : Andalas green (#008D49), Coursera blue (#01579B)
+   ========================================================= */
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --andalas-green: #008D49;
+  --coursera-blue: #01579B;
+  --overlay-dark: rgba(0, 0, 0, 0.55);
+  --overlay-darker: rgba(0, 0, 0, 0.72);
+  --font-heading: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-body: Calibri, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: #0b0b0b;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ---------- shared: brand logos ---------- */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.brand-logo { height: 56px; width: auto; border-radius: 4px; }
+.brand-logo--coursera { height: 56px; }
+.brand-logo--andalas { height: 68px; }
+.brand-logo--sm.brand-logo--andalas { height: 48px; }
+.brand-logo--sm.brand-logo--coursera { height: 40px; }
+
+.panel-topbar {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  display: flex;
+  gap: 12px;
+  z-index: 5;
+}
+
+/* =========================================================
+   SECTION 1 — HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+}
+.bg-layer--1 {
+  background-image: url('../assets/img/bg-hero-1.jpg');
+  animation: crossfade 14s infinite;
+}
+.bg-layer--2 {
+  background-image: url('../assets/img/bg-hero-2.jpg');
+  animation: crossfade 14s infinite;
+  animation-delay: 7s;
+}
+@keyframes crossfade {
+  0%   { opacity: 1; }
+  45%  { opacity: 1; }
+  55%  { opacity: 0; }
+  95%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.15) 35%, rgba(0,0,0,.55) 65%, rgba(0,0,0,.65) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  width: min(56%, 720px);
+  padding: 6vh 5vw 6vh 0;
+  text-align: right;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  line-height: 1.12;
+  margin: 0 0 28px;
+  color: var(--white);
+}
+
+.cycler {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 90px;
+  margin-bottom: 24px;
+}
+.cycler-logo {
+  max-height: 60px;
+  width: auto;
+  background: #fff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.cycler-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin: 0;
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.cycler-logo.is-shown,
+.cycler-title.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.course-list {
+  list-style: none;
+  margin: 0;
+  padding: 14px 0 0;
+  font-size: .85rem;
+  line-height: 1.7;
+  color: var(--white);
+  border-top: 1px solid rgba(255,255,255,.25);
+  position: relative;
+  z-index: 2;
+}
+.course-list--center {
+  text-align: center;
+  border-top: none;
+  max-width: 700px;
+  margin: 32px auto 0;
+}
+
+.hero-photo {
+  position: absolute;
+  left: 2vw;
+  bottom: 0;
+  height: 78vh;
+  max-height: 640px;
+  width: auto;
+  z-index: 3;
+}
+
+.name-plate {
+  position: absolute;
+  left: 2vw;
+  bottom: 6vh;
+  background: var(--black);
+  padding: 12px 22px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.name-plate__name { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; letter-spacing: .02em; }
+.name-plate__desc { font-size: .72rem; letter-spacing: .03em; opacity: .9; }
+
+/* =========================================================
+   SHARED PANEL LAYOUT (sections 2, 3, 4)
+   ========================================================= */
+.panel {
+  position: relative;
+  min-height: 100vh;
+  padding: 14vh 6vw 8vh;
+  overflow: hidden;
+}
+
+.panel-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.panel-bg--logowall {
+  background-image: url('../assets/img/bg-logowall.png');
+  background-size: 480px auto;
+  background-repeat: repeat;
+}
+
+.panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+}
+.panel-overlay--strong { background: rgba(0,0,0,.72); }
+
+.panel-title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  margin: 0 0 5vh;
+}
+
+/* ---- Section 2: Pendahuluan ---- */
+.panel-body--intro {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 5vw;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.intro-flyer { width: min(320px, 40vw); border-radius: 2px; box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+.intro-text { flex: 1; min-width: 280px; font-size: 1.05rem; line-height: 1.75; }
+.intro-text p { margin: 0 0 1.2em; }
+
+/* ---- Section 3: Metode Pembelajaran ---- */
+.panel-body--metode {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 5vw;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8vh;
+}
+.metode-text {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(0,0,0,.55);
+  padding: 28px;
+  border-radius: 4px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+.metode-text p { margin: 0 0 1.1em; }
+.metode-text p:last-child { margin-bottom: 0; }
+.metode-shot--sidebar { width: min(360px, 42vw); border-radius: 4px; box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+
+.panel-body--metode2 { position: relative; z-index: 2; display: flex; justify-content: center; }
+.metode-shot--video { width: min(920px, 90vw); border-radius: 4px; box-shadow: 0 16px 40px rgba(0,0,0,.55); }
+
+/* ---- Scroll reveal ---- */
+.reveal { opacity: 0; transition: opacity .8s ease, transform .8s ease; }
+.reveal--left  { transform: translateX(-90px); }
+.reveal--right { transform: translateX(90px); }
+.reveal.is-visible { opacity: 1; transform: translateX(0); }
+
+/* ---- Section 4: Kursus yang diambil / ticker ---- */
+.ticker {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  margin: 4vh 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.ticker-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: ticker-scroll 55s linear infinite;
+}
+.ticker-track img {
+  height: 230px;
+  width: auto;
+  border-radius: 3px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.5);
+  flex: none;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 820px) {
+  .hero-content { width: 100%; text-align: left; padding: 4vh 6vw; margin-left: 0; }
+  .hero-overlay { background: rgba(0,0,0,.62); }
+  .cycler { align-items: flex-start; }
+  .hero-photo { display: none; }
+  .name-plate { left: 6vw; bottom: 4vh; }
+  .panel { padding-top: 18vh; }
+  .panel-body--intro, .panel-body--metode { flex-direction: column; }
+  .intro-flyer, .metode-shot--sidebar { width: min(100%, 340px); }
+  .ticker-track img { height: 160px; }
+}
