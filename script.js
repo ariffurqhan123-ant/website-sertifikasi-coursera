@@ -2,10 +2,10 @@
 // 1) HERO LOGO CYCLER — foto lalu judul sertifikasi, bergantian
 // =========================================================
 const cyclerData = [
-  { logo: "assets/img/logo-penn.jpeg",      title: "Positive Psychology Specialization" },
-  { logo: "assets/img/logo-michigan.jpeg",  title: "Leading People and Teams Specialization" },
-  { logo: "assets/img/logo-yale.jpeg",      title: "The Introduction to Psychology" },
-  { logo: "assets/img/logo-cbs.png",        title: "Neuroscience and Neuromarketing" }
+  { logo: "logo-penn.jpeg",      title: "Positive Psychology Specialization" },
+  { logo: "logo-michigan.jpeg",  title: "Leading People and Teams Specialization" },
+  { logo: "logo-yale.jpeg",      title: "The Introduction to Psychology" },
+  { logo: "logo-cbs.png",        title: "Neuroscience and Neuromarketing" }
 ];
 
 (function initCycler() {
@@ -83,7 +83,7 @@ const cyclerData = [
   if (!track) return;
 
   const certs = [15, 16, 17, 18, 19, 20, 21, 22, 23, 24].map(
-    (n) => `assets/img/cert-${n}.jpg`
+    (n) => `cert-${n}.jpg`
   );
 
   // render the set twice back-to-back for a seamless infinite loop
